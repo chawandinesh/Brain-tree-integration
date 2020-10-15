@@ -132,7 +132,7 @@ export const PaymentForm = (props) =>
                     Transaction id        = {transactionData.transaction !== undefined ? transactionData.transaction.id: 'N/A'} <br></br>
                 </div>
                 <div>
-                    <a className="btn btn-primary" onClick={gotoPayment}>Go back to payment page</a>
+                    <a className="btn btn-primary" onClick={() => gotoPayment()}>Go back to payment page</a>
                 </div>
             </div> :
             

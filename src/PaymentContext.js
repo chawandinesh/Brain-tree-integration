@@ -5,7 +5,6 @@ import axios from 'axios';
 export const PaymentContext = createContext();
 
 export const PaymentProvider = props => {
-
     const[tokenObject, setTokenObject] = useState({});
     const[isPaymentMade, setIsPaymentMade] = useState(false);
     const[transactionData, setTransactionData] = useState({});
@@ -15,17 +14,14 @@ export const PaymentProvider = props => {
     }, []);
 
     const getToken = async ()=> {
-       let result = await axios(Urls.InitializeUrl, {withCredentials: true})
-       const tokenObject = result.data.data;
-       setTokenObject(tokenObject);
+       const result =  await axios.get(Urls.InitializeUrl).then(res => res.data).catch(err => console.log(err))
+       setTokenObject(result.data);
     }
 
     const paymentTransaction = async (data) => {
-        console.log(Urls.ConfirmUrl);
-        let result = await axios.post(Urls.ConfirmUrl, data, {withCredentials: true});
+        let result = await axios.post(Urls.ConfirmUrl,data).then(res => res).catch(err => console.log(err))
         setTransactionData(result.data.data);
         setIsPaymentMade(true);
-        
     }
 
     return(

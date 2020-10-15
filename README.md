@@ -42,3 +42,9 @@
 ### client side integration
 You will find the client side integration in this repository. (using react)
 
+
+## starting application
+npm i 
+npm run proj:dev
+
+Project will run on <b>http://localhost:3000</b> and server will run on <b>http://localhost:8000</b>
